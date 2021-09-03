@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AddUserComponent } from './component/add-user/add-user.component';
 import { HeaderComponent } from './component/header/header.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HomePageComponent } from './component/home-page/home-page.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

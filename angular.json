@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "address-book-frontend"
+    }
+  },
+  "defaultProject": "address-book-frontend",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -21,15 +21,15 @@
       <th>Phone Number</th>
       <th></th>
   </tr>
-  
+
   <!-- table-content-->
-  <tr>
-    <td>Roshni Mali</td>
-    <td>House No 14/ Bagarwara, Nathdwara</td>
-    <td>Udaipur</td>
-    <td>Rajasthan</td>
-    <td>143442</td>
-    <td>9898989898</td>
+  <tr *ngFor="let person of personDetails">
+    <td>{{person.fullname}}</td>
+    <td>{{person.address}}</td>
+    <td>{{person.city}}</td>
+    <td>{{person.state}}</td>
+    <td>{{person.zipNo}}</td>
+    <td>{{person.phoneNumber}}</td>
     <td>
         <img id=1 src="../assets/icons/delete-black-18dp.svg" alt="delete">
         &nbsp;

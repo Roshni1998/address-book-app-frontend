@@ -4,39 +4,41 @@
 <div class="main-content">
   <div class="header-content">
     <div class="person-detail-text">Person Details</div>
-    <a class="add-button" routerLink="/add-user">
-      <img src="../assets/icons/add-24px.svg" alt="">Add Person</a>
-  </div> 
+    <div>
+      <a routerLink="/add-user" class="add-button">
+        <img src="../assets/icons/add-24px.svg" alt="">Add Person
+      </a>
+    </div>
+  </div>
 
+  <!-- table-heading-->
+  <div class="table-main">
+    <table id="table-display" class="table">
+      <tr>
+        <th>Fullname</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Phone Number</th>
+        <th></th>
+      </tr>
 
-<!-- table-heading-->
-<div class="table-main">
-  <table id ="table-display" class="table">
-    <tr>
-      <th>Fullname</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip Code</th>
-      <th>Phone Number</th>
-      <th></th>
-  </tr>
+      <!-- table-content-->
+      <tr *ngFor="let person of personDetails">
+        <td>{{person.fullname}}</td>
+        <td>{{person.address}}</td>
+        <td>{{person.city}}</td>
+        <td>{{person.state}}</td>
+        <td>{{person.zipNo}}</td>
+        <td>{{person.phoneNumber}}</td>
+        <td>
+          <img id=1 src="../assets/icons/delete-black-18dp.svg" alt="delete">
+          &nbsp;
+          <img id=1 src="../assets/icons/create-black-18dp.svg" alt="edit">
+        </td>
+      </tr>
+    </table>
 
-  <!-- table-content-->
-  <tr *ngFor="let person of personDetails">
-    <td>{{person.fullname}}</td>
-    <td>{{person.address}}</td>
-    <td>{{person.city}}</td>
-    <td>{{person.state}}</td>
-    <td>{{person.zipNo}}</td>
-    <td>{{person.phoneNumber}}</td>
-    <td>
-        <img id=1 src="../assets/icons/delete-black-18dp.svg" alt="delete">
-        &nbsp;
-        <img id=1 src="../assets/icons/create-black-18dp.svg" alt="edit"> 
-    </td>
-</tr>
-  </table>
-
-</div>
+  </div>
 </div>

@@ -1,1 +1,72 @@
 <app-header></app-header>
+
+<!-- form-content-->
+<div class="form-content">
+
+  <form class="form" [formGroup]= "personFormGroup">
+    <!-- form-head-->
+    <div class="form-head">PERSON ADDRESS FORM
+      <a routerLink="/home-page" class="close-button">
+        <img src="../assets/images/cancel.jpeg" alt="">
+      </a>
+    </div>
+
+    <!-------Input FullName--------->
+    <div class="row-content">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Full Name</mat-label>
+        <input id="name" class="name" matInput>
+      </mat-form-field>
+    </div>
+
+    <!-------Input PhoneNumber--------->
+    <div class="row-content">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Phone Number</mat-label> 
+        <input class="name" matInput>
+      </mat-form-field>
+    </div>
+
+    <!-------Input Address--------->
+    <div class="row-content">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Address</mat-label>
+        <input class="name" matInput>
+      </mat-form-field>
+    </div>
+
+    <!-------Input City--------->
+    <div class="row-content">
+      <mat-form-field class="example-full-width" appearance="outline"> 
+        <mat-label>City</mat-label>
+        <input class="name" matInput>
+      </mat-form-field>
+    </div>
+
+    <!-------Input State--------->
+    <div class="row-content">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>State</mat-label>
+        <input class="name" matInput>
+      </mat-form-field>
+    </div>
+
+    <!-------Input ZipCode--------->
+    <div class="row-content">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>ZipCode</mat-label>
+        <input class="name" matInput>
+      </mat-form-field>
+    </div>
+
+    <!-------Adding Add and Reset Button--------->
+    <div class="buttonParent">
+      <a routerLink="/home-page">
+        <button mat-raised-button type="add" class="button" id="addButton">Add</button>
+      </a>
+      <div class="submit-reset">
+        <button mat-raised-button type="reset" class="button">Reset</button>
+      </div>
+    </div>
+
+  </form>

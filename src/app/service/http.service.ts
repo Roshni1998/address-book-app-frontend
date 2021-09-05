@@ -14,4 +14,13 @@ export class HttpService {
   getAddressBookData(): Observable<any> {
     return this.httpClient.get(this.baseUrl + "/get");
   }
+
+  addNewContact(body: any): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "/addnewcontact", body);
+  }
+
+  deleteContact(id: number): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + "/delete/" + id);
+  }
+
 }

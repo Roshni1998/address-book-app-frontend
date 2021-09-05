@@ -33,9 +33,9 @@
         <td>{{person.zipNo}}</td>
         <td>{{person.phoneNumber}}</td>
         <td>
-          <img id=1 src="../assets/icons/delete-black-18dp.svg" alt="delete">
+          <img id={{person.id}} src="../assets/icons/delete-black-18dp.svg" alt="delete" (click)="remove(person.id)">
           &nbsp;
-          <img id=1 src="../assets/icons/create-black-18dp.svg" alt="edit">
+          <img id={{person.id}} src="../assets/icons/create-black-18dp.svg" alt="edit">
         </td>
       </tr>
     </table>

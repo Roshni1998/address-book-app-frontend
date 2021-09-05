@@ -12,7 +12,8 @@ import { HttpService } from 'src/app/service/http.service';
 export class AddUserComponent implements OnInit {
 
   public person: AddressBook = new AddressBook();
-  personFormGroup: FormGroup;
+
+  personFormGroup: FormGroup
 
   constructor(private formBuilder: FormBuilder,
               private httpService: HttpService,
@@ -29,6 +30,15 @@ export class AddUserComponent implements OnInit {
               }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    this.person = this.personFormGroup.value;
+    console.log(this.personFormGroup);
+    console.log(this.person);
+    this.httpService.addNewContact(this.person).subscribe(response => {
+      console.log(response);
+    });
   }
 
 }

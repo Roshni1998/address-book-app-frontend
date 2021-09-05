@@ -22,4 +22,12 @@ export class HomePageComponent implements OnInit {
     } );
   }
 
+  remove(id: number): void {
+    console.log(id);
+    this.httpService.deleteContact(id).subscribe(response => {
+      console.log(response);
+      this.ngOnInit();
+    });
+  }
+
 }

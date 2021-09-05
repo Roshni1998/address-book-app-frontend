@@ -23,4 +23,8 @@ export class HttpService {
     return this.httpClient.delete(this.baseUrl + "/delete/" + id);
   }
 
+  updateContact(id: number, body: any): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "/updatecontact/" + id, body);
+  }
+
 }

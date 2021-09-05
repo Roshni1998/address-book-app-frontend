@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddressBook } from 'src/app/model/address-book';
 import { HttpService } from 'src/app/service/http.service';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,7 +14,8 @@ export class HomePageComponent implements OnInit {
   public personDetails: AddressBook[] = [];
 
   constructor(private httpService: HttpService, 
-              private router: Router,) { }
+              private router: Router,
+              private dataService: DataService) { }
 
   ngOnInit(): void {
     this.httpService.getAddressBookData().subscribe(data => {
@@ -25,6 +27,15 @@ export class HomePageComponent implements OnInit {
   remove(id: number): void {
     console.log(id);
     this.httpService.deleteContact(id).subscribe(response => {
+      console.log(response);
+      this.ngOnInit();
+    });
+  }
+
+  update(person: AddressBook): void {
+    this.dataService.changePerson(person);
+    this.router.navigateByUrl('/add-user/' + person.id);
+    this.httpService.updateContact(person.id, person).subscribe(response => {
       console.log(response);
       this.ngOnInit();
     });

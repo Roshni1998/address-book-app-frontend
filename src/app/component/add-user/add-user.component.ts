@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddressBook } from 'src/app/model/address-book';
+import { DataService } from 'src/app/service/data.service';
 import { HttpService } from 'src/app/service/http.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class AddUserComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private httpService: HttpService,
               private router: Router,
-              private activatedRoute: ActivatedRoute,) { 
+              private activatedRoute: ActivatedRoute,
+              private dataService: DataService) { 
                 this.personFormGroup = this.formBuilder.group({
                   fullName: new FormControl(''),
                   address: new FormControl(''),
@@ -30,15 +32,34 @@ export class AddUserComponent implements OnInit {
               }
 
   ngOnInit(): void {
+    if(this.activatedRoute.snapshot.params['id'] != undefined) {
+      this.dataService.currentPerson.subscribe(person => {
+        if(Object.keys(person).length !== 0) {
+          console.log(person);
+          this.personFormGroup.get('fullName').setValue(person.fullName);
+          this.personFormGroup.get('address').setValue(person.address);
+          this.personFormGroup.get('city').setValue(person.city);
+          this.personFormGroup.get('state').setValue(person.state);
+          this.personFormGroup.get('zipNo').setValue(person.zipNo);
+          this.personFormGroup.get('phoneNumber').setValue(person.phoneNumber);
+        }
+      });
+    }
   }
 
   onSubmit() {
-    this.person = this.personFormGroup.value;
-    console.log(this.personFormGroup);
-    console.log(this.person);
-    this.httpService.addNewContact(this.person).subscribe(response => {
-      console.log(response);
-    });
+  this.person = this.personFormGroup.value;
+    if(this.activatedRoute.snapshot.params['id'] != undefined){
+      this.httpService.updateContact(this.activatedRoute.snapshot.params['id'], this.person).subscribe(response => {
+        console.log(response);
+        this.ngOnInit();
+        this.router.navigateByUrl("/home-page");
+      });
+    }else {
+      this.httpService.addNewContact(this.person).subscribe(response => {
+        console.log(response);
+        this.router.navigateByUrl("/home-page");
+      });
+    }
   }
-
 }

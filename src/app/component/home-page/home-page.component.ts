@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AddressBook } from 'src/app/model/address-book';
 import { HttpService } from 'src/app/service/http.service';
 import { DataService } from 'src/app/service/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home-page',
@@ -15,7 +16,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(private httpService: HttpService, 
               private router: Router,
-              private dataService: DataService) { }
+              private dataService: DataService,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.httpService.getAddressBookData().subscribe(data => {
@@ -29,6 +31,7 @@ export class HomePageComponent implements OnInit {
     this.httpService.deleteContact(id).subscribe(response => {
       console.log(response);
       this.ngOnInit();
+      this.snackBar.open('Contact Deleted Successfully!', '', {duration: 4000, verticalPosition: 'top'});
     });
   }
 

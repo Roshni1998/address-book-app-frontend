@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddressBook } from 'src/app/model/address-book';
 import { DataService } from 'src/app/service/data.service';
@@ -20,7 +21,8 @@ export class AddUserComponent implements OnInit {
               private httpService: HttpService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private dataService: DataService) { 
+              private dataService: DataService,
+              private snackBar: MatSnackBar) { 
                 this.personFormGroup = this.formBuilder.group({
                   fullName: new FormControl(''),
                   address: new FormControl(''),
@@ -54,11 +56,13 @@ export class AddUserComponent implements OnInit {
         console.log(response);
         this.ngOnInit();
         this.router.navigateByUrl("/home-page");
+        this.snackBar.open('Updated Successfully!', 'OK', {duration: 4000, verticalPosition: 'top'});
       });
     }else {
       this.httpService.addNewContact(this.person).subscribe(response => {
         console.log(response);
         this.router.navigateByUrl("/home-page");
+        this.snackBar.open('New Person Added Successfully!', 'OK', {duration: 4000, verticalPosition: 'top'});
       });
     }
   }

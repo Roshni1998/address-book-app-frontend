@@ -59,18 +59,19 @@
 
 td, th {
   text-align: left;
-  padding: 20px;
+  padding: 7px 16px;
 }
 
 th {
-  text-align: left;
-  font: normal normal medium 18px/24px Roboto;
+  background: 0% 0% no-repeat padding-box;
+  font: normal normal 550 14px/21px Roboto;
   letter-spacing: 0px;
-  text-emphasis-color: #658292;
-  text-transform: capitalize;
-  opacity: 1;
+  color:gray;
+  opacity: 2;
   border: 0px solid #dddddd;
-  font-family: 'Roboto', sans-serif;
+  width: fit-content;
+  padding: 1.25%;
+  padding-bottom: 0%; 
 }
 
 tr:not(:first-child) {

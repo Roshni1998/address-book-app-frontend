@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddressBook } from 'src/app/model/address-book';
@@ -26,12 +26,12 @@ export class AddUserComponent implements OnInit {
               private snackBar: MatSnackBar,
               private notifierService: NotifierService) { 
                 this.personFormGroup = this.formBuilder.group({
-                  fullName: new FormControl(''),
-                  address: new FormControl(''),
-                  city: new FormControl(''),
-                  state: new FormControl(''),
-                  zipNo: new FormControl(''),
-                  phoneNumber: new FormControl('')
+                  fullName: new FormControl('', [Validators.required, Validators.pattern("^[A-Z][a-zA-z\\s]{2,}$")]),
+                  address: new FormControl('', Validators.required),
+                  city: new FormControl('', Validators.required),
+                  state: new FormControl('', Validators.required),
+                  zipNo: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{6}$")]),
+                  phoneNumber: new FormControl('', [Validators.required, Validators.pattern("^(6|7|8|9)?[0-9]{9}$")])
                 });
               }
 
@@ -49,6 +49,10 @@ export class AddUserComponent implements OnInit {
         }
       });
     }
+  }
+
+  public checkError = (controlName: string, errorName: string) => {
+    return this.personFormGroup.controls[controlName].hasError(errorName);
   }
 
   onSubmit() {

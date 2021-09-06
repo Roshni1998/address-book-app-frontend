@@ -2,3 +2,21 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.delete.mat-snack-bar-container {
+  background: rgb(240, 3, 3);
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0px;
+  border-radius: 5px;
+  box-sizing: 1079px;
+}
+
+.success.mat-snack-bar-container {
+  background: green;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0px;
+  border-radius: 5px;
+  box-sizing: 1079px;
+}

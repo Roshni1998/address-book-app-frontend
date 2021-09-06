@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AngularMaterialModule } from './material/angular-material-module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NotifierComponent } from './notifier/notifier.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddUserComponent,
     HeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    NotifierComponent
   ],
   imports: [
     BrowserModule,
